@@ -6,29 +6,32 @@ import { usePathname } from "next/navigation";
 import { CiMenuFries } from "react-icons/ci";
 import { AiOutlineClose } from "react-icons/ai";
 
-const links = [
+type LinkType = {
+  name: string;
+  path: string;
+};
+
+const links: LinkType[] = [
   { name: "home", path: "/" },
   { name: "About Us", path: "/about-us" },
   { name: "contact Us", path: "/contact-us" },
 ];
 
-const MobileNav = () => {
-  const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef(null);
+const MobileNav: React.FC = () => {
+  const pathname = usePathname(); // Get the current route path
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   useEffect(() => {
-    const handleOutsideClick = (event) => {
-      // Close the menu if the click is outside the menu
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setMenuOpen(false);
       }
     };
 
-    const handleKeyDown = (event) => {
-      // Close the menu if the Escape key is pressed
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setMenuOpen(false);
       }
@@ -37,7 +40,6 @@ const MobileNav = () => {
     document.addEventListener("mousedown", handleOutsideClick);
     document.addEventListener("keydown", handleKeyDown);
 
-    // Cleanup the event listeners on unmount
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
       document.removeEventListener("keydown", handleKeyDown);
@@ -62,11 +64,15 @@ const MobileNav = () => {
           className="fixed top-0 left-0 h-screen w-[80%] bg-white z-50 p-4 flex flex-col items-center gap-12 shadow-lg transform transition-transform duration-300 translate-x-0"
         >
           <nav className="flex flex-col justify-center items-center mt-28 gap-8">
-            {links.map((link, index) => (
+            {links.map((link) => (
               <Link
                 href={link.path}
-                key={index}
-                className={`${link.path === pathname ? "dark:text-white text-red-700" : "text-blue-700 capitalize font-bold text-base"} transition-all`}
+                key={link.path}
+                className={`${
+                  link.path === pathname
+                    ? "dark:text-white text-red-700"
+                    : "text-blue-700"
+                } capitalize font-bold text-base transition-all`}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.name}
