@@ -32,7 +32,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section data-aos= "zoom-in" className="w-full h-full py-12">
+    <section data-aos= "zoom-in" className="w-full h-full py-12 ">
       <div
         className="w-10/12 mx-auto h-[278px] flex items-center justify-center "
         style={{
