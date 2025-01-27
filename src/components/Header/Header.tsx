@@ -4,6 +4,7 @@ import React from "react";
 import DesktopNav from "./DesktopNav";
 import { ModeToggle } from "../ui/theme/theme-toggle";
 import MobileNav from "./MobileNav";
+import MainHome from "../Home/MainHome";
 
 
 const Header = () => {
@@ -12,7 +13,7 @@ const Header = () => {
       <div className="w-10/12 mx-auto flex items-center justify-between">
         {/* Logo */}
       
-        <Link href="/" className="flex flex-col items-center justify-center">
+        <Link href='/' className="flex flex-col items-center justify-center">
           <Image
             src="/CharitEase Logo 1.png"
             alt="Logo"
