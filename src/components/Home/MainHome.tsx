@@ -9,7 +9,7 @@ import ScrollToTop from "./ScrollToTop";
 
 const MainHome = () => {
   return (
-    <main>
+    <main className="w-10/12 mx-auto">
       <Hero />
       <AboutUs />
       <FeaturedCampaign />
