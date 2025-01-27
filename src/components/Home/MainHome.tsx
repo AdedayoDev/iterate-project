@@ -9,7 +9,7 @@ import ScrollToTop from "./ScrollToTop";
 
 const MainHome = () => {
   return (
-    <main className="overflow-x-hidden">
+    <main className="">
       <Hero />
       <AboutUs />
       <FeaturedCampaign />
