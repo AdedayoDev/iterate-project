@@ -121,7 +121,7 @@ const DonateNow: React.FC = () => {
               className="group relative flex flex-col w-full h-[400px] border border-gray-200 shadow-lg overflow-hidden transition-transform duration-300 transform hover:scale-105"
             >
               {/* Image Section */}
-              <div className="relative w-12/12 mx-auto lg:w-full h-full">
+              <div className="relative w-full mx-auto lg:w-full h-full">
                 <Image
                   src={item.image}
                   alt={item.heading}
